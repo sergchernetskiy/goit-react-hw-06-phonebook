@@ -1,10 +1,18 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 
 import { FormField, Label, Input, Button } from './Form.styled';
+import { notifyWarn } from 'components/Notification/Notification';
+import { getContacts } from '../../redux/selectors';
+import { addContacts } from '../../redux/contactsSlice';
 
-const Form = ({ onSubmit }) => {
+const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
+  const contacts = useSelector(getContacts).initialContacts;
+  const dispatch = useDispatch();
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -30,10 +38,14 @@ const Form = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    const isSuccess = onSubmit({ name, number });
-    if (!isSuccess) {
+    const searchedContact = contacts.find(contact => contact.name === name);
+
+    if (searchedContact) {
+      notifyWarn(`Name ${name} is already in contacts`);
       return;
     }
+
+    dispatch(addContacts({ id: nanoid(), name, number }));
 
     reset();
   };
