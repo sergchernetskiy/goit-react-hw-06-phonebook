@@ -22,7 +22,6 @@ export const Text = styled.p`
   margin-bottom: ${p => p.theme.space[2]}px;
   font-family: ${p => p.theme.fonts.body};
   font-size: ${p => p.theme.fontSizes.m};
-  /* font-weight: ${p => p.theme.fontWeights.bold}; */
   line-height: ${p => p.theme.lineHeights.body};
   color: ${p => p.theme.colors.brown};
 `;

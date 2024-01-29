@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { AiOutlineRest } from 'react-icons/ai';
 import { Button, Text, Circle, ElementList } from './ElementList.styled';
 
@@ -14,11 +13,4 @@ export const ElementListContacts = ({ id, name, number, onDelete }) => {
       </Button>
     </ElementList>
   );
-};
-
-ElementListContacts.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
-  onDelete: PropTypes.func.isRequired,
 };
