@@ -8,7 +8,7 @@ export const Filter = () => {
   const dispatch = useDispatch();
 
   const onChangeFilter = event => {
-    dispatch(changeFilter(event.target.value));
+    dispatch(() => changeFilter(event.target.value));
   };
 
   return (
@@ -20,7 +20,7 @@ export const Filter = () => {
         name="filter"
         value={valueFilter}
         onChange={onChangeFilter}
-        placeholder="Search"
+        placeholder="Search contact"
       />
     </Label>
   );

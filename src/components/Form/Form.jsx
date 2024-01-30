@@ -38,10 +38,18 @@ const Form = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    const searchedContact = contacts.find(contact => contact.name === name);
+    const searchedContactName = contacts.find(contact => contact.name === name);
+    const searchedContactNumber = contacts.find(
+      contact => contact.number === number
+    );
 
-    if (searchedContact) {
+    if (searchedContactName) {
       notifyWarn(`Name ${name} is already in contacts`);
+      return;
+    }
+
+    if (searchedContactNumber) {
+      notifyWarn(`Number ${name} is already in contacts`);
       return;
     }
 
